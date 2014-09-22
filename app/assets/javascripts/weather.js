@@ -1,5 +1,4 @@
 function insertReply(content) {
-	console.log('monkey');
 	var temp = document.getElementById('temperature');
 	temp.innerHTML = content.main.temp;
 }
