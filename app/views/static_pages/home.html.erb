@@ -4,6 +4,11 @@
   <h2>
     This is the home page for the StepOutside application.
   </h2>
-
-  <%= link_to "Sign up now!", '#', class: "btn btn-large btn-primary" %>
+  <form action="javascript:getWeather()">
+  	<input type="search" name="location" id="search" onChange="getWeather()">
+  	<input type="submit" value="Search">
+  </form>
+  <h4>
+  	Weather: <span id="temperature"></span>
+  </h4>
 </div>
