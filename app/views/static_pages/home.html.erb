@@ -4,31 +4,12 @@
   <h2>
     This is the home page for the StepOutside application.
   </h2>
-  <form action="javascript:getWeather()">
-  	<input type="search" name="location" id="search" onChange="getWeather()">
+  <form action="#">
+  	<input type="search" name="location" id="search">
   	<input type="submit" value="Search">
   </form>
   <h4>
   	Weather: <span id="temperature"></span>
     Time Zone: <span id="timezone"></span>
   </h4>
-  <div class='input'>
-    <label>Address : </label><input id="addresspicker" />
-    <label>Lat:      </label> <input id="lat" disabled=disabled> <br/>
-    <label>Lng:      </label> <input id="lng" disabled=disabled> <br/>
-  </div>
 </div>
-<script>
-  $(function() {
-    var addresspicker = $( "#addresspicker" ).addresspicker({
-      updateCallback: showCallback
-    });
-
-    function showCallback(geocodeResult, parsedGeocodeResult){
-      console.log(geocodeResult);
-      console.log(parsedGeocodeResult.lat + " " + parsedGeocodeResult.lng);
-      $('#callback_result').text(JSON.stringify(parsedGeocodeResult, null, 4));
-    }
-
-  });
-  </script>
