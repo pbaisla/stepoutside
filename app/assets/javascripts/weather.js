@@ -4,11 +4,15 @@ $(function() {
 	});
 
 	function showCallback(geocodeResult, parsedGeocodeResult){
-	  	console.log(parsedGeocodeResult.lat + " " + parsedGeocodeResult.lng);
+	  	var latitude = parsedGeocodeResult.lat;
+	  	var longitude = parsedGeocodeResult.lng;
 	  	$.ajax({
-			url: "https://api.forecast.io/forecast/71912c666bb4f17717079ae55a769f86/37.8267,-122.423",
+			url: "https://api.forecast.io/forecast/71912c666bb4f17717079ae55a769f86/" + latitude + "," + longitude,
 			jsonp: "callback",
 			dataType: "jsonp",
+			data: {
+				units: "si"
+			},
 			success: function( response ) {
 				$('#temperature').text(response.currently.temperature);
 				$('#timezone').text(response.timezone);
