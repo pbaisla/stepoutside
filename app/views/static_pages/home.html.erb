@@ -10,5 +10,28 @@
   </form>
   <h4>
   	Weather: <span id="temperature"></span>
+    Time Zone: <span id="timezone"></span>
   </h4>
+  <div class='input'>
+    <label>Address : </label><input id="addresspicker_map" />
+    <label>Lat:      </label> <input id="lat" disabled=disabled> <br/>
+    <label>Lng:      </label> <input id="lng" disabled=disabled> <br/>
+  </div>
 </div>
+<script>
+  $(function() {
+    var addresspicker = $( "#addresspicker" ).addresspicker();
+    var addresspickerMap = $( "#addresspicker_map" ).addresspicker({
+      updateCallback: showCallback,
+      elements: {
+        lat:      "#lat",
+        lng:      "#lng",
+      }
+    });
+
+    function showCallback(geocodeResult, parsedGeocodeResult){
+      $('#callback_result').text(JSON.stringify(parsedGeocodeResult, null, 4));
+    }
+
+  });
+  </script>
