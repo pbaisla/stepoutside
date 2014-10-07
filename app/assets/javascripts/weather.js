@@ -14,10 +14,25 @@ $(function() {
 				units: "si"
 			},
 			success: function( response ) {
+				$('#summary').text(response.currently.summary);
+				$('#sunrise').text(response.daily.sunriseTime);
+				$('#sunset').text(response.daily.sunsetTime);
+				$('#icon').text(response.currently.icon);
+				$('#windspeed').text(response.currently.windSpeed);
+				$('#cloudcover').text(response.currently.cloudCover);
+				$('#humidity').text(response.currently.humidity);
+				$('#pressure').text(response.currently.pressure);
+				$('#rainchance').text(response.currently.precipProbability);
+				$('#apptemperature').text(response.currently.apparentTemperature);
 				$('#temperature').text(response.currently.temperature);
+				$('#maxtemperature').text(response.daily.temperatureMax);
+				$('#mintemperature').text(response.daily.temperatureMin);
+				$('#latitude').text(response.latitude);
+				$('#longitude').text(response.longitude);
 				$('#timezone').text(response.timezone);
-				console.log( response.currently.timezone );
-				console.log( response.currently.temperature ); // server response
+				$('#offset').text(response.offset);
+				console.log( response.currently );
+				console.log( response ); // server response
 			}
 		});
 	}
