@@ -12,6 +12,7 @@ html {
 
 body {
   padding-top: 60px;
+  background: #c9edf7;
 }
 
 section {
@@ -27,6 +28,12 @@ textarea {
   h1 {
     margin-bottom: 10px;
   }
+}
+
+#search {
+  margin: 2% 0% 2% 5%;
+  width: 50%;
+  height: 2em;
 }
 
 /* typography */
@@ -78,10 +85,15 @@ p {
 /* footer */
 
 footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   margin-top: 45px;
-  padding-top: 5px;
   border-top: 1px solid $grayMediumLight;
   color: $grayLight;
+  .container {
+    padding: 5px;
+  }
   a {
     color: $gray;
     &:hover {
@@ -99,4 +111,15 @@ footer {
       margin-left: 10px;
     }
   }
+}
+
+.ui-menu-item, .ui-state-focus {
+  list-style: none;
+  background: #FFFFFF;
+  padding: 10px;
+  width: 50%;
+}
+
+.ui-state-focus {
+  background: #D9EE77;
 }
