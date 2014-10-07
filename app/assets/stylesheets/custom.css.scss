@@ -1,8 +1,12 @@
 @import "bootstrap";
+@import "bootstrap-sprockets";
 
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
+$grayLight: #eeeeee;
+$grayDarker: #aaaaaa;
+$gray: #ececec;
 
 /* universal */
 
@@ -15,25 +19,10 @@ body {
   background: #c9edf7;
 }
 
-section {
-  overflow: auto;
-}
-
-textarea {
-  resize: vertical;
-}
-
-.center {
-  text-align: center;
-  h1 {
-    margin-bottom: 10px;
-  }
-}
-
 #search {
-  margin: 2% 0% 2% 5%;
-  width: 50%;
-  height: 2em;
+  padding: 4px;
+  margin: 10px;
+  width: 100%;
 }
 
 /* typography */
@@ -85,19 +74,16 @@ p {
 /* footer */
 
 footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
   margin-top: 45px;
   border-top: 1px solid $grayMediumLight;
-  color: $grayLight;
+  color: $grayDarker;
   .container {
     padding: 5px;
   }
   a {
-    color: $gray;
+    color: $grayDarker;
     &:hover {
-      color: $grayDarker;
+      color: $gray;
     }
   }
   small {
@@ -117,7 +103,6 @@ footer {
   list-style: none;
   background: #FFFFFF;
   padding: 10px;
-  width: 50%;
 }
 
 .ui-state-focus {
