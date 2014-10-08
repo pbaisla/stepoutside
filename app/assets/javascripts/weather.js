@@ -4,6 +4,7 @@ $(function() {
 	});
 
 	function showCallback(geocodeResult, parsedGeocodeResult){
+		console.log("In showCallback");
 	  	var latitude = parsedGeocodeResult.lat;
 	  	var longitude = parsedGeocodeResult.lng;
 	  	$.ajax({
