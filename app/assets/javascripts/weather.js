@@ -14,41 +14,47 @@ $(function() {
 			jsonp: "callback",
 			dataType: "jsonp",
 			data: {
-				units: "si"
+				units: "ca"
 			},
 			success: function( response ) {
 				$('#summary').text(response.currently.summary);
-				$('#sunrise').text(response.daily.sunriseTime);
-				$('#sunset').text(response.daily.sunsetTime);
-				$('#icon').text(response.currently.icon);
-				console.log("/images/icons/" + response.currently.icon + ".png");
+				$('#sunrise').text(convertTimezone(response.daily.data[0].sunriseTime * 1000));
+				$('#sunset').text(convertTimezone(response.daily.data[0].sunsetTime * 1000));
 				$('#weather-img').attr("src", "/images/icons/" + response.currently.icon + ".png");
-				$('#windspeed').text(response.currently.windSpeed);
-				$('#cloudcover').text(response.currently.cloudCover);
-				$('#humidity').text(response.currently.humidity);
-				$('#pressure').text(response.currently.pressure);
-				$('#rainchance').text(response.currently.precipProbability);
-				$('#apptemperature').text(response.currently.apparentTemperature);
-				$('#temperature').text(response.currently.temperature);
-				$('#maxtemperature').text(response.daily.temperatureMax);
-				$('#mintemperature').text(response.daily.temperatureMin);
-				$('#latitude').text(response.latitude);
-				$('#longitude').text(response.longitude);
+				$('#windspeed').text(response.currently.windSpeed + " km/h");
+				$('#cloudcover').text(response.currently.cloudCover * 100 + "%");
+				$('#humidity').text(response.currently.humidity * 100 + "%");
+				$('#rainchance').text(response.currently.precipProbability * 100 + "%");
+				$('#apptemperature').text(response.currently.apparentTemperature + " °C");
+				$('#temperature').text(response.currently.temperature + " °C");
+				$('#maxtemperature').text(response.daily.data[0].temperatureMax + " °C");
+				$('#mintemperature').text(response.daily.data[0].temperatureMin + " °C");
+				function formatLocation(location) {
+					var decimals = location - Math.floor(location);
+					var minutes = Math.floor(decimals * 60);
+					return Math.floor(location) + "°" + minutes + "'";
+				}
+				$('#latitude').text((response.latitude > 0)? formatLocation(response.latitude) + " N":formatLocation(-1 * response.latitude) + " S");
+				$('#longitude').text((response.longitude > 0)? formatLocation(response.longitude) + " E":formatLocation(-1 * response.longitude) + " W");
 				$('#timezone').text(response.timezone);
-				$('#localtimezone').text( -1 * (new Date).getTimezoneOffset()/60);
-				$('#offset').text(response.offset);
+				$('#localtimezone').text((((-1 * (new Date).getTimezoneOffset()/60) < 0)?(-1 * (new Date).getTimezoneOffset()/60):"+"+(-1 * (new Date).getTimezoneOffset()/60)) + " GMT");
+				$('#offset').text(((response.offset < 0)?response.offset:"+"+response.offset) + " GMT");
 				$('#currenttime').text(response.currently.time);
 
-				function clock() {
-					var current = new Date();
-					$('#localtime').text(current.toLocaleTimeString());
+				function convertTimezone(d) {
+					var current = new Date(d);
 					var currenttime = current.getTime();
 					var offset = current.getTimezoneOffset() * 60000;
 					var utctime = currenttime + offset;
 					var locationTime = utctime + (3600000 * response.offset);
-					console.log(utctime+ " " + response.offset +" "+locationTime);
 					var location = new Date(locationTime);
-					$('#currenttime').text(location.toLocaleTimeString());
+					return location.toLocaleTimeString();
+				}
+
+				function clock() {
+					var d = new Date();
+					$('#localtime').text(d.toLocaleTimeString());
+					$('#currenttime').text(convertTimezone(d));
 					cleartime = setTimeout(clock, 1000);
 				}
 				clock();
