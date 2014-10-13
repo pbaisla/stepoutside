@@ -16,20 +16,37 @@ html {
 
 body {
   padding-top: 60px;
-//  background: #c9edf7;
+  background: #55b4e7;
 }
 
 #search {
   padding: 4px;
   margin: 10px;
   width: 100%;
-  box-shadow: 1px 1px 10px #D9EE77;
+  box-shadow: 1px 1px 10px #C8DD66;
 }
 
 #go {
   position: absolute;
   top: 22px;
   right: 15px;
+}
+
+.card {
+  background-color: #FFFFFF;
+  margin: 4% 4% 10%;
+  padding: 2%;
+  box-shadow: 1px 1px 10px #000
+}
+
+#weather-img {
+  max-width: 225px;
+  min-width: 180px;
+  visibility: hidden;
+}
+
+#more {
+  display: none;
 }
 
 /* typography */
@@ -81,11 +98,13 @@ p {
 /* footer */
 
 footer {
-  margin-top: 45px;
-  border-top: 1px solid $grayMediumLight;
+  background-color: #000000;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
   color: $grayDarker;
-  .container {
-    padding: 5px;
+  .container-fluid {
+    padding: 5px 5px 0px;
   }
   a {
     color: $grayDarker;
@@ -107,5 +126,5 @@ footer {
 }
 
 .ui-state-focus {
-  background: #D9EE77 !important
+  background: #D9EE77 !important;
 }
