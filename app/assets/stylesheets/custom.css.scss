@@ -14,6 +14,10 @@ html {
   overflow-y: scroll;
 }
 
+strong {
+  float: right;
+}
+
 body {
   padding-top: 60px;
   background: #55b4e7;
@@ -34,7 +38,7 @@ body {
 
 .card {
   background-color: #FFFFFF;
-  margin: 4% 4% 10%;
+  margin: 4% 4% 60px;
   padding: 2%;
   box-shadow: 1px 1px 10px #000
 }

@@ -13,13 +13,15 @@ $(function() {
 
 	function showCallback(geocodeResult, parsedGeocodeResult){
 		console.log("In showCallback");
+		console.log(geocodeResult);
+		console.log(parsedGeocodeResult);
 		$('#weather-img').attr("src", "/images/spinner.gif");
 		$('#weather-img').css('visibility', 'visible');
 		clearTimeout(cleartime);
 	  	var latitude = parsedGeocodeResult.lat;
 	  	var longitude = parsedGeocodeResult.lng;
 	  	$.ajax({
-			url: "https://api.forecast.io/forecast/71912c666bb4f17717079ae55a769f86/" + latitude + "," + longitude,
+			url: "https://api.forecast.io/forecast/" + key + "/" + latitude + "," + longitude,
 			jsonp: "callback",
 			dataType: "jsonp",
 			data: {
@@ -38,6 +40,7 @@ $(function() {
 				$('#temperature').text(response.currently.temperature + " °C");
 				$('#maxtemperature').text(response.daily.data[0].temperatureMax + " °C");
 				$('#mintemperature').text(response.daily.data[0].temperatureMin + " °C");
+				$('#location').text(geocodeResult.formatted_address);
 				
 				function formatLocation(location) {
 					var decimals = location - Math.floor(location);
