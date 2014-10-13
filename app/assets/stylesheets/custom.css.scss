@@ -104,6 +104,10 @@ p {
 
 /* header */
 
+header {
+  box-shadow: 1px 1px 10px #FFF;
+}
+
 #logo {
   float: left;
   margin-right: 10px;
@@ -123,6 +127,7 @@ p {
 /* footer */
 
 footer {
+  box-shadow: 1px 1px 10px #FFF;
   background-color: #000000;
   width: 100%;
   position: fixed;
