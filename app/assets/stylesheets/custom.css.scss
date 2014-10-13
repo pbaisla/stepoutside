@@ -40,11 +40,15 @@ body {
   background: #55b4e7;
 }
 
-#main {
+#spinner {
+  margin-top: 50%;
+}
+
+#main, #spinner, #locationcard {
   display: none;
 }
 
-#search {
+#search, #forecastsearch {
   padding: 4px;
   margin: 10px;
   width: 100%;
@@ -104,7 +108,7 @@ p {
 /* header */
 
 header {
-  box-shadow: 1px 1px 10px #FFF;
+  box-shadow: 1px 1px 10px #000;
 }
 
 #logo {
@@ -126,7 +130,7 @@ header {
 /* footer */
 
 footer {
-  box-shadow: 1px 1px 10px #FFF;
+  box-shadow: 1px 1px 10px #000;
   background-color: #000000;
   width: 100%;
   position: fixed;

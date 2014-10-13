@@ -14,6 +14,5 @@
 //= require bootstrap-sprockets
 //= require jquery-ui
 //= require jquery_ujs
-//= require turbolinks
 //= require jquery.ui.addresspicker
 //= require_tree .

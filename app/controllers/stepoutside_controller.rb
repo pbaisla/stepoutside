@@ -4,4 +4,7 @@ class StepoutsideController < ApplicationController
 
   def about
   end
+
+  def forecast
+  end
 end

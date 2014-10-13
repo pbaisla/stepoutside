@@ -10,6 +10,9 @@ $(function() {
 	var addresspicker = $( "#search" ).addresspicker({
 	  updateCallback: showCallback
 	});
+	var addresspicker = $( "#forecastsearch" ).addresspicker({
+	  updateCallback: showCallback
+	});
 
 	function showCallback(geocodeResult, parsedGeocodeResult){
 		function landing() {
@@ -22,7 +25,9 @@ $(function() {
 				$(".info").slideUp("slow");
 			}
 		}
-		$(".card").fadeOut("slow");
+		$(".card").fadeOut("slow", function() {
+			$("#spinner").fadeIn("slow");
+		});
 		console.log("In showCallback");
 		console.log(geocodeResult);
 		console.log(parsedGeocodeResult);
@@ -101,7 +106,9 @@ $(function() {
 				console.log( response ); // server response
 			},
 			complete: function() {
-				$(".card").fadeIn("slow");
+				$("#spinner").fadeOut("slow", function() {
+					$(".card").fadeIn("slow");		
+				});
 			}
 		});
 		landing();
