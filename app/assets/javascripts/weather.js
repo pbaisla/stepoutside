@@ -26,8 +26,6 @@ $(function() {
 		console.log("In showCallback");
 		console.log(geocodeResult);
 		console.log(parsedGeocodeResult);
-		//$('#weather-img').attr("src", "/images/spinner.gif");
-		$('#weather-img').css('visibility', 'visible');
 		clearTimeout(cleartime);
 	  	var latitude = parsedGeocodeResult.lat;
 	  	var longitude = parsedGeocodeResult.lng;
