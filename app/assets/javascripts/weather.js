@@ -12,10 +12,21 @@ $(function() {
 	});
 
 	function showCallback(geocodeResult, parsedGeocodeResult){
+		function landing() {
+			if ($("#main").css("display") == "none") {
+				$("#landing").slideUp("slow", function() {
+					$("#searchdiv").removeClass("col-sm-offset-3", "slow", function() {
+						$("#main").fadeIn("slow");	
+					});
+				});
+				$(".info").slideUp("slow");
+			}
+		}
+		$(".card").fadeOut("slow");
 		console.log("In showCallback");
 		console.log(geocodeResult);
 		console.log(parsedGeocodeResult);
-		$('#weather-img').attr("src", "/images/spinner.gif");
+		//$('#weather-img').attr("src", "/images/spinner.gif");
 		$('#weather-img').css('visibility', 'visible');
 		clearTimeout(cleartime);
 	  	var latitude = parsedGeocodeResult.lat;
@@ -90,7 +101,11 @@ $(function() {
 				clock();
 				console.log( response.currently );
 				console.log( response ); // server response
+			},
+			complete: function() {
+				$(".card").fadeIn("slow");
 			}
 		});
+		landing();
 	}
 });

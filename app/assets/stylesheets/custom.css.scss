@@ -14,6 +14,23 @@ html {
   overflow-y: scroll;
 }
 
+#landing {
+  margin: auto;
+  color: #fff;
+  text-shadow: 1px 1px 10px #000;
+  h1 {
+    font-size: 7em;
+    margin: 5% 0% 0%;
+  }
+  h3 {
+    margin-bottom: 5%;
+  }
+}
+
+.info {
+  text-shadow: 1px 1px 1px #FFF;
+}
+
 strong {
   float: right;
 }
@@ -21,6 +38,10 @@ strong {
 body {
   padding-top: 60px;
   background: #55b4e7;
+}
+
+#main {
+  display: none;
 }
 
 #search {
