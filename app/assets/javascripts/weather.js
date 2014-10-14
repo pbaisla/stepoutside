@@ -11,7 +11,7 @@ $(function() {
 	  updateCallback: showCallback
 	});
 	var addresspicker = $( "#forecastsearch" ).addresspicker({
-	  updateCallback: showCallback
+	  updateCallback: showForecastCallback
 	});
 
 	function showCallback(geocodeResult, parsedGeocodeResult){
@@ -52,6 +52,9 @@ $(function() {
 				$('#rainchance').text(Math.round(response.currently.precipProbability * 10000)/100 + "%");
 				$('#apptemperature').text(response.currently.apparentTemperature + " °C");
 				$('#temperature').text(response.currently.temperature + " °C");
+				$('#hour').text(response.hourly.data[0].summary);
+				$('#tfhour').text(response.hourly.summary);
+				$('#week').text(response.daily.summary);
 				$('#maxtemperature').text(response.daily.data[0].temperatureMax + " °C");
 				$('#mintemperature').text(response.daily.data[0].temperatureMin + " °C");
 				$('#location').text(geocodeResult.formatted_address);
@@ -102,6 +105,60 @@ $(function() {
 				});
 				
 				clock();
+				console.log( response.currently );
+				console.log( response ); // server response
+			},
+			complete: function() {
+				$("#spinner").fadeOut("slow", function() {
+					$(".card").fadeIn("slow");		
+				});
+			}
+		});
+		landing();
+	}
+
+	function showForecastCallback(geocodeResult, parsedGeocodeResult){
+		function landing() {
+			if ($("#main").css("display") == "none") {
+				$("#landing").slideUp("slow", function() {
+					$("#searchdiv").removeClass("col-sm-offset-3", "slow", function() {
+						$("#main").fadeIn("slow");	
+					});
+				});
+				$(".info").slideUp("slow");
+			}
+		}
+		$(".card").fadeOut("slow", function() {
+			$("#spinner").fadeIn("slow");
+		});
+		console.log("In showCallback");
+		console.log(geocodeResult);
+		console.log(parsedGeocodeResult);
+		clearTimeout(cleartime);
+	  	var latitude = parsedGeocodeResult.lat;
+	  	var longitude = parsedGeocodeResult.lng;
+	  	$.ajax({
+			url: "https://api.forecast.io/forecast/" + key + "/" + latitude + "," + longitude,
+			jsonp: "callback",
+			dataType: "jsonp",
+			data: {
+				units: "ca"
+			},
+			success: function( response ) {
+				$('#summary').text(response.currently.summary);
+				$('#sunrise').text(convertTimezone(response.daily.data[0].sunriseTime * 1000));
+				$('#sunset').text(convertTimezone(response.daily.data[0].sunsetTime * 1000));
+				$('#weather-img').attr("src", "/images/icons/" + response.currently.icon + ".png");
+				$('#windspeed').text(response.currently.windSpeed + " km/h");
+				$('#cloudcover').text(Math.round(response.currently.cloudCover * 10000)/100 + "%");
+				$('#humidity').text(Math.round(response.currently.humidity * 10000)/100 + "%");
+				$('#rainchance').text(Math.round(response.currently.precipProbability * 10000)/100 + "%");
+				$('#apptemperature').text(response.currently.apparentTemperature + " °C");
+				$('#temperature').text(response.currently.temperature + " °C");
+				$('#maxtemperature').text(response.daily.data[0].temperatureMax + " °C");
+				$('#mintemperature').text(response.daily.data[0].temperatureMin + " °C");
+				$('#location').text(geocodeResult.formatted_address);
+
 				console.log( response.currently );
 				console.log( response ); // server response
 			},

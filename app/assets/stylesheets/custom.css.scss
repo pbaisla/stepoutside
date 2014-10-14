@@ -44,7 +44,7 @@ body {
   margin-top: 50%;
 }
 
-#main, #spinner, #locationcard {
+#main, #spinner {
   display: none;
 }
 
@@ -73,8 +73,13 @@ body {
   min-width: 180px;
 }
 
-#more {
+#more, #locationcard {
   display: none;
+}
+
+#locationcard {
+  margin: 0% 1%;
+  padding: 1%;
 }
 
 /* typography */
