@@ -154,22 +154,33 @@ $(function() {
 					var location = new Date(locationTime);
 					return location.toLocaleTimeString();
 				}
-
-				$('#summary').text(response.currently.summary);
-				$('#sunrise').text(convertTimezone(response.daily.data[0].sunriseTime * 1000));
-				$('#sunset').text(convertTimezone(response.daily.data[0].sunsetTime * 1000));
-				$('#weather-img').attr("src", "/images/icons/" + response.currently.icon + ".png");
-				$('#windspeed').text(response.currently.windSpeed + " km/h");
-				$('#cloudcover').text(Math.round(response.currently.cloudCover * 10000)/100 + "%");
-				$('#humidity').text(Math.round(response.currently.humidity * 10000)/100 + "%");
-				$('#rainchance').text(Math.round(response.currently.precipProbability * 10000)/100 + "%");
-				$('#apptemperature').text(response.currently.apparentTemperature + " °C");
-				$('#temperature').text(response.currently.temperature + " °C");
-				$('#maxtemperature').text(response.daily.data[0].temperatureMax + " °C");
-				$('#mintemperature').text(response.daily.data[0].temperatureMin + " °C");
+				for (var i = 0; i < 8; i++) {
+					$('#summary'+i).text(response.daily.data[i].summary);
+					$('#sunrise'+i).text(convertTimezone(response.daily.data[i].sunriseTime * 1000));
+					$('#sunset'+i).text(convertTimezone(response.daily.data[i].sunsetTime * 1000));
+					$('#weather-img'+i).attr("src", "/images/icons/" + response.daily.data[i].icon + ".png");
+					$('#humidity'+i).text(Math.round(response.daily.data[i].humidity * 10000)/100 + "%");
+					$('#rainchance'+i).text(Math.round(response.daily.data[i].precipProbability * 10000)/100 + "%");
+					$('#maxtemperature'+i).text(response.daily.data[i].temperatureMax + " °C");
+					$('#mintemperature'+i).text(response.daily.data[i].temperatureMin + " °C");
+					$('#day'+i).text("Today");
+				};
 				$('#location').text(geocodeResult.formatted_address);
-				$('#day').text("Today");
-
+				
+				$("body").css("background-color", function() {
+					switch(response.daily.icon) {
+						case "clear-day": return "#ffee00";
+						case "clear-night": return "#110d4a";
+						case "sleet": return "#70888f";
+						case "partly-cloudy-day": return "#03cafc";
+						case "cloudy": return "#909090";
+						case "partly-cloudy-night": return "#817887";
+						case "snow": return "#f2f5ff";
+						case "fog": return "#787788";
+						case "wind": return "#7C8382";
+						case "rain": return "#69609F";
+					}
+				});
 				console.log( response.currently );
 				console.log( response ); // server response
 			},

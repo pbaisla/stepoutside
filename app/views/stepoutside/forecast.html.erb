@@ -8,7 +8,7 @@
     <span class="glyphicon glyphicon-search" id="go"></span>
      <input type="search" name="location" id="forecastsearch" placeholder="Search for any city..." autocomplete="off" autofocus="autofocus">
   </div>
-  <div class="col-sm-5 fcard" id="locationcard">
+  <div class="col-xs-11 col-sm-5 fcard" id="locationcard">
     Location
     <strong><span id="location"> &nbsp; </span></strong>
   </div>
@@ -21,30 +21,27 @@
 </div>
 
 <div class="row" id="main">
-
+<% for i in 0..7 %>
   <div class="col-md-5 text-right fcard">
-    <h1 class="text-left"><span id="day"></span></h1>
+    <h1 class="text-left"><span id="day<%= i %>"></span></h1>
       <div class="col-sm-6 text-center hidden-xs">
-         <%= image_tag "icons/na.png", :id => "weather-img", :width => "75%" %>
+         <%= image_tag "icons/na.png", :id => "weather-img" + i.to_s, :class => "weather-img", :width => "75%" %>
       </div>
       <div class="text-left clearfix">
-              Summary: <strong><span id="summary"></span></strong>
-      <br>    Temperature: <strong><span id="temperature"></span></strong>
-      <br>    Feels like: <strong><span id="apptemperature"></span></strong>
-      <br>    Chance of Rain: <strong><span id="rainchance"></span></strong>
-      <br>    Max Temperature: <strong><span id="maxtemperature"></span></strong>
-      <br>    Min Temperature: <strong><span id="mintemperature"></span></strong>
-      <br>    Wind Speed: <strong><span id="windspeed"></span></strong>
-      <br>    Cloud Cover: <strong><span id="cloudcover"></span></strong>
-      <br>    Humidity: <strong><span id="humidity"></span></strong>
+              Sunrise Time: <strong><span id="sunrise<%= i %>"></span></strong>
+      <br>    Sunset Time: <strong><span id="sunset<%= i %>"></span></strong>
+      <br>    Chance of Rain: <strong><span id="rainchance<%= i %>"></span></strong>
+      <br>    Max Temperature: <strong><span id="maxtemperature<%= i %>"></span></strong>
+      <br>    Min Temperature: <strong><span id="mintemperature<%= i %>"></span></strong>
+      <br>    Humidity: <strong><span id="humidity<%= i %>"></span></strong>
       </div>
-      <div class="text-right"><a href="#" id="see-more">More</a></div>
-      <div class="col-md-12 text-left" id="more">
-        <hr>
-        <h4>More info</h4>
-              Sunrise Time: <strong><span id="sunrise"></span></strong>
-      <br>    Sunset Time: <strong><span id="sunset"></span></strong>
+    <div class="row">
+      <div class="col-xs-12 text-left">
+        <br>
+        Summary: <strong><span id="summary<%= i %>"></span></strong>
       </div>
+    </div>
   </div>
 
+<% end -%>
 </div>

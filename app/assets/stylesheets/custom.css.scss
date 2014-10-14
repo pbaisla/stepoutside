@@ -67,13 +67,17 @@ body {
   padding: 2%;
   box-shadow: 1px 1px 10px #000
 }
-
 #weather-img {
   max-width: 225px;
   min-width: 180px;
 }
 
-#more, #locationcard {
+.weather-img {
+  max-width: 200px;
+  min-width: 100px;
+}
+
+#more, #locationcard, .more {
   display: none;
 }
 
