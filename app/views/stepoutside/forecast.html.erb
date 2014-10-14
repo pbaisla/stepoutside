@@ -22,7 +22,7 @@
 
 <div class="row" id="main">
 <% for i in 0..7 %>
-  <div class="col-md-5 text-right fcard">
+  <div class="col-md-5 text-right fcard" id="card<%= i %>">
     <h1 class="text-left"><span id="day<%= i %>"></span></h1>
       <div class="col-sm-6 text-center hidden-xs">
          <%= image_tag "icons/na.png", :id => "weather-img" + i.to_s, :class => "weather-img", :width => "75%" %>

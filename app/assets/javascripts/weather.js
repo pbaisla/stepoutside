@@ -131,6 +131,24 @@ $(function() {
 		$(".fcard").fadeOut("slow", function() {
 			$("#spinner").fadeIn("slow");
 		});
+
+		function setday(i) {
+			var weekday = new Array(7);
+			weekday[0]=  "Sunday";
+			weekday[1] = "Monday";
+			weekday[2] = "Tuesday";
+			weekday[3] = "Wednesday";
+			weekday[4] = "Thursday";
+			weekday[5] = "Friday";
+			weekday[6] = "Saturday";
+			var today = (new Date()).getDay();
+			switch(i) {
+				case 0: return "Today";
+				case 1: return "Tomorrow";
+				default: return weekday[(today+i)%7];
+			}
+		}
+
 		console.log("In showCallback");
 		console.log(geocodeResult);
 		console.log(parsedGeocodeResult);
@@ -163,7 +181,7 @@ $(function() {
 					$('#rainchance'+i).text(Math.round(response.daily.data[i].precipProbability * 10000)/100 + "%");
 					$('#maxtemperature'+i).text(response.daily.data[i].temperatureMax + " °C");
 					$('#mintemperature'+i).text(response.daily.data[i].temperatureMin + " °C");
-					$('#day'+i).text("Today");
+					$('#day'+i).text(setday(i));
 				};
 				$('#location').text(geocodeResult.formatted_address);
 				
@@ -181,6 +199,7 @@ $(function() {
 						case "rain": return "#69609F";
 					}
 				});
+
 				console.log( response.currently );
 				console.log( response ); // server response
 			},
