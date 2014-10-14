@@ -1,3 +1,22 @@
 <% provide(:title, 'About') %>
-<h1>About</h1>
-<p>StepOutside is a Ruby on Rails app which tells you the time zone and current weather of any city.</p>
+<div class="card">
+	<h1>About</h1>
+	<p>
+		StepOutside is a web app built using the Ruby on Rails framework. 
+		You can search for any city in the world to get its get current weather 
+		conditions, timezone, current time and weekly forecast among other things.
+	</p>
+	<p>
+		The ability to search for any location in the word is provided by 
+		<%= link_to "jquery-addresspicker", "https://github.com/sgruhier/jquery-addresspicker/" %> 
+		by <%= link_to "sgruhier", "https://github.com/sgruhier/" %> 
+		which uses the <%= link_to "Google Maps API", "https://developers.google.com/maps/" %>.
+		<br>
+		Weather forecasts are made available using the <%= link_to "forecast.io", "forecast.io/" %> 
+		<%= link_to "API", "https://developer.forecast.io/" %>.
+	</p>
+	<p>
+		The source code of this web app is freely available to all and can be found 
+		<%= link_to "here", "https://github.com/pbaisla/stepoutside" %>.
+	</p>
+</div>

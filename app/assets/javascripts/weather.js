@@ -117,7 +117,7 @@ $(function() {
 		landing();
 	}
 
-	function showForecastCallback(geocodeResult, parsedGeocodeResult){
+	function showForecastCallback(geocodeResult, parsedGeocodeResult, lat = null, long = null){
 		function landing() {
 			if ($("#main").css("display") == "none") {
 				$("#landing").slideUp("slow", function() {
