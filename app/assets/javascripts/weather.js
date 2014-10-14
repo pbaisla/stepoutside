@@ -128,14 +128,13 @@ $(function() {
 				$(".info").slideUp("slow");
 			}
 		}
-		$(".card").fadeOut("slow", function() {
+		$(".fcard").fadeOut("slow", function() {
 			$("#spinner").fadeIn("slow");
 		});
 		console.log("In showCallback");
 		console.log(geocodeResult);
 		console.log(parsedGeocodeResult);
-		clearTimeout(cleartime);
-	  	var latitude = parsedGeocodeResult.lat;
+		var latitude = parsedGeocodeResult.lat;
 	  	var longitude = parsedGeocodeResult.lng;
 	  	$.ajax({
 			url: "https://api.forecast.io/forecast/" + key + "/" + latitude + "," + longitude,
@@ -145,6 +144,17 @@ $(function() {
 				units: "ca"
 			},
 			success: function( response ) {
+
+				function convertTimezone(d) {
+					var current = new Date(d);
+					var currenttime = current.getTime();
+					var offset = current.getTimezoneOffset() * 60000;
+					var utctime = currenttime + offset;
+					var locationTime = utctime + (3600000 * response.offset);
+					var location = new Date(locationTime);
+					return location.toLocaleTimeString();
+				}
+
 				$('#summary').text(response.currently.summary);
 				$('#sunrise').text(convertTimezone(response.daily.data[0].sunriseTime * 1000));
 				$('#sunset').text(convertTimezone(response.daily.data[0].sunsetTime * 1000));
@@ -158,13 +168,14 @@ $(function() {
 				$('#maxtemperature').text(response.daily.data[0].temperatureMax + " °C");
 				$('#mintemperature').text(response.daily.data[0].temperatureMin + " °C");
 				$('#location').text(geocodeResult.formatted_address);
+				$('#day').text("Today");
 
 				console.log( response.currently );
 				console.log( response ); // server response
 			},
 			complete: function() {
 				$("#spinner").fadeOut("slow", function() {
-					$(".card").fadeIn("slow");		
+					$(".fcard").fadeIn("slow");		
 				});
 			}
 		});
