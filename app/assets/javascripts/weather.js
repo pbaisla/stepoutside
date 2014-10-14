@@ -1,4 +1,25 @@
 $(function() {
+	if (window.location.pathname == "/forecast") {
+		if ((gup("lat") != null) && (gup("lng") != null) && (gup("loc") != null)) {
+			showForecastCallback(null, null, gup("lat"), gup("lng"), gup("loc"));
+		}
+		else {
+
+		}
+	}
+
+	function gup( name )
+	{
+	  name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+	  var regexS = "[\\?&]"+name+"=([^&#]*)";
+	  var regex = new RegExp( regexS );
+	  var results = regex.exec( window.location.href );
+	  if( results == null )
+	    return null;
+	  else
+	    return results[1];
+	}
+
 	var cleartime;
 	$("#see-more").click(function() {
 		$("#more").slideToggle();
@@ -42,6 +63,11 @@ $(function() {
 				units: "ca"
 			},
 			success: function( response ) {
+				$("#forecastlink").attr("href", function() {
+					var url = "/forecast?lat=" + latitude + "&lng=" + longitude + "&loc=" + geocodeResult.formatted_address;
+					return url;
+				});
+
 				$('#summary').text(response.currently.summary);
 				$('#sunrise').text(convertTimezone(response.daily.data[0].sunriseTime * 1000));
 				$('#sunset').text(convertTimezone(response.daily.data[0].sunsetTime * 1000));
@@ -117,7 +143,7 @@ $(function() {
 		landing();
 	}
 
-	function showForecastCallback(geocodeResult, parsedGeocodeResult, lat = null, long = null){
+	function showForecastCallback(geocodeResult, parsedGeocodeResult, lat = null, lng = null, loc = null){
 		function landing() {
 			if ($("#main").css("display") == "none") {
 				$("#landing").slideUp("slow", function() {
@@ -152,8 +178,8 @@ $(function() {
 		console.log("In showCallback");
 		console.log(geocodeResult);
 		console.log(parsedGeocodeResult);
-		var latitude = parsedGeocodeResult.lat;
-	  	var longitude = parsedGeocodeResult.lng;
+		var latitude = ((parsedGeocodeResult == null)? lat: parsedGeocodeResult.lat);
+	  	var longitude = ((parsedGeocodeResult == null)? lng: parsedGeocodeResult.lng);
 	  	$.ajax({
 			url: "https://api.forecast.io/forecast/" + key + "/" + latitude + "," + longitude,
 			jsonp: "callback",
@@ -183,7 +209,10 @@ $(function() {
 					$('#mintemperature'+i).text(response.daily.data[i].temperatureMin + " °C");
 					$('#day'+i).text(setday(i));
 				};
-				$('#location').text(geocodeResult.formatted_address);
+				if (parsedGeocodeResult != null)
+					$('#location').text(geocodeResult.formatted_address);
+				else
+					$('#location').text(loc.replace(/%../g, " "));
 				
 				$("body").css("background-color", function() {
 					switch(response.daily.icon) {
