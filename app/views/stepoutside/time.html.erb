@@ -1,0 +1,57 @@
+<% provide(:title, 'Time') %>
+<div id="landing">
+  <div class="row"><div class="col-xs-offset-3"><%= image_tag "sologo.png", :id => "sologo", :width => "70%" %></div></div>
+  <h3 class="text-center">World Time</h3>
+</div>
+<div class="row">
+  <div class="col-sm-offset-3 col-sm-6" id="searchdiv">
+    <span class="glyphicon glyphicon-search" id="go"></span>
+     <input type="search" name="location" id="search" placeholder="Search for any city..." autocomplete="off" autofocus="autofocus">
+  </div>
+</div>
+<div class="info text-center"><p><small><em>Just begin typing to select your city</em></small></p></div>
+<div class="row text-center">
+  <div class="col-sm-offset-5 col-sm-2 hidden-xs">
+    <%= image_tag "spinner.gif", :id => "spinner", :width => "100px" %>
+  </div>
+</div>
+<div class="row" id="main">
+
+  <div class="col-md-5 text-left card">
+    <h1 class="text-left">Time</h1>
+    <div class="row">
+      <div class="col-sm-12">
+      <div class="time"><strong><span id="currenttime"></span></strong></div>
+      </div>
+      <div class="col-sm-6">
+      <br>    Time Zone: <strong><span id="timezone"></span></strong>
+      <br>    Offset: <strong><span id="offset"></span></strong>
+      </div>
+      <div class="col-sm-6">
+      <br>    Latitude: <strong><span id="latitude"></span></strong>
+      <br>    Longitude: <strong><span id="longitude"></span></strong>
+      </div>
+    </div>
+      <br>
+  </div>
+
+  <div class="col-md-5 text-left card">
+    <h1 class="text-left">Local Time</h1>
+    <div class="row">
+      <div class="col-sm-12">
+      <div class="time"><strong><span id="localtime"></span></strong></div>
+      </div>
+      <div class="col-sm-6">
+      <br>    Time Zone: <strong><span id="timezone"></span></strong>
+      <br>    Offset: <strong><span id="localtimezone"></span></strong>
+      </div>
+      <div class="col-sm-6">
+      <br>    Latitude: <strong><span id="latitude"></span></strong>
+      <br>    Longitude: <strong><span id="longitude"></span></strong>
+      </div>
+    </div>
+      <br>
+  </div>
+  </div>
+
+</div>

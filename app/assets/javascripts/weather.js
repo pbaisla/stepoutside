@@ -18,7 +18,9 @@ $(function() {
 
 	if ($("#alert").text().search(/[a-z]/) == -1 ) {
 		$("#alert").css("visibility", "hidden");
-	} 
+	}
+
+	$("#arrow").delay(5000).fadeOut(); 
 
 	function gup( name )
 	{

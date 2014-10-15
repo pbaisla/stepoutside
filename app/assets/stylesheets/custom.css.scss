@@ -14,6 +14,14 @@ html {
   overflow-y: scroll;
 }
 
+#arrow {
+  position: fixed;
+  bottom: 50px;
+  left: 48%;
+  width: 50px;
+  z-index: 50; 
+}
+
 #landing {
   margin: auto;
   color: #fff;
@@ -24,6 +32,12 @@ html {
   }
   h3 {
     margin-bottom: 5%;
+  }
+}
+
+.time {
+  strong {
+    font-size: 6em;
   }
 }
 
