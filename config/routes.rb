@@ -1,4 +1,5 @@
 Stepoutside::Application.routes.draw do
+  devise_for :users
   root  'stepoutside#home'
   match '/about',   to: 'stepoutside#about',   via: 'get'
   match '/forecast',   to: 'stepoutside#forecast',   via: 'get'

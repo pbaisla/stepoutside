@@ -9,7 +9,11 @@
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>
   </head>
-  <body>
+  <body><!--
+<div class="infos">
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+</div> -->
     <%= render 'layouts/header' %>
     <div class="container-fluid">
       <%= yield %>

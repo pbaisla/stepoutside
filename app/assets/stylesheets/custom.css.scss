@@ -31,6 +31,14 @@ html {
   text-shadow: 1px 1px 1px #FFF;
 }
 
+.infos {
+  z-index: 100;
+  position: fixed;
+  left: 10px;
+  bottom: 10px;
+  background-color: #fff;
+}
+
 strong {
   float: right;
 }
@@ -67,6 +75,7 @@ body {
   padding: 2%;
   box-shadow: 1px 1px 10px #000
 }
+
 #weather-img {
   max-width: 225px;
   min-width: 180px;

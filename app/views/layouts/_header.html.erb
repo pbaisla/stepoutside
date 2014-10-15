@@ -15,7 +15,7 @@
             <li><%= link_to "Home",     root_path %></li>
             <li><%= link_to "About",    about_path %></li>
             <li><%= link_to "Forecast", forecast_path %></li>
-            <li><%= link_to "Sign in",  '#' %></li>
+            <li><%= render 'layouts/user_widget' %></li>
           </ul>
         </nav>
       </div>
