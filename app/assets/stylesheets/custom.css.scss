@@ -27,16 +27,19 @@ html {
   }
 }
 
-.info {
-  text-shadow: 1px 1px 1px #FFF;
+.alert, #infos {
+  z-index: 50;
+  position: fixed;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  h2 {
+    color: #990000;
+  }
 }
 
-.infos {
-  z-index: 100;
-  position: fixed;
-  left: 10px;
-  bottom: 10px;
-  background-color: #fff;
+.info {
+  text-shadow: 1px 1px 1px #FFF;
 }
 
 strong {

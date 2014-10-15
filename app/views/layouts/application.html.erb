@@ -9,11 +9,17 @@
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>
   </head>
-  <body><!--
-<div class="infos">
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-</div> -->
+  <body>
+<div id="infos">
+  <div id="notice" class="alert alert-success alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+    <p class="notice"><%= notice %></p>
+  </div>
+  <div id="alert" class="alert alert-warning alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+    <p class="alert"><%= alert %></p>
+  </div>
+</div>
     <%= render 'layouts/header' %>
     <div class="container-fluid">
       <%= yield %>

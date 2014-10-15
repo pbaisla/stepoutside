@@ -8,6 +8,18 @@ $(function() {
 		}
 	}
 
+	console.log($("#notice").text().search(/[a-z]/));
+
+	if ($("#notice").text().search(/[a-z]/) == -1 ) {
+		$("#notice").css("visibility", "hidden");
+	}
+	else
+		$("#notice").delay(1000).fadeOut(); 
+
+	if ($("#alert").text().search(/[a-z]/) == -1 ) {
+		$("#alert").css("visibility", "hidden");
+	} 
+
 	function gup( name )
 	{
 	  name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
