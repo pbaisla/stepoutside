@@ -12,12 +12,12 @@ $(function() {
 		return t;
 	}
 
-	$("#tchange").click(function() {
-		$("#celcius").toggleClass("badge");
-		$("#fahrenheit").toggleClass("badge");
+	$(".tchange").click(function() {
+		$(".celcius").toggleClass("badge");
+		$(".fahrenheit").toggleClass("badge");
 		var unit; 
 		var temp;
-		 if($("#celcius").hasClass("badge")) {
+		 if($(".celcius").hasClass("badge")) {
 		 	unit = 1;
 		 	temp = "°C";
 		 }
@@ -33,6 +33,21 @@ $(function() {
 		$("#maxtemperature").text( converttemp(unit, mt) + " " + temp);
 		var mnt = $("#mintemperature").text().substr(0,$("#mintemperature").text().indexOf(' '));
 		$("#mintemperature").text( converttemp(unit, mnt) + " " + temp);
+		var tid, atid, mtid, mntid;
+		for (var i = 0; i < 8; i++) {
+			tid = "#temperature" + i;
+			atid = "#apptemperature" + i;
+			mtid = "#maxtemperature" + i;
+			mntid = "#mintemperature" + i;
+			t = $(tid).text().substr(0,$(tid).text().indexOf(' '));
+			$(tid).text( converttemp(unit, t) + " " + temp);
+			at = $(atid).text().substr(0,$(atid).text().indexOf(' '));
+			$(atid).text( converttemp(unit, at) + " " + temp);
+			mt = $(mtid).text().substr(0,$(mtid).text().indexOf(' '));
+			$(mtid).text( converttemp(unit, mt) + " " + temp);
+			mnt = $(mntid).text().substr(0,$(mntid).text().indexOf(' '));
+			$(mntid).text( converttemp(unit, mnt) + " " + temp);
+		};
 		console.log(t+" "+at+" "+mt+" "+mnt+" "+$("#temperature").text().substr($("#temperature").text().indexOf(' ')+1)); 
 	});
 
@@ -97,9 +112,9 @@ $(function() {
 				$(".info").slideUp("slow");
 			}
 		}
-		if ($("#fahrenheit").hasClass("badge")) {
-			$("#fahrenheit").toggleClass("badge");
-			$("#celcius").toggleClass("badge");
+		if ($(".fahrenheit").hasClass("badge")) {
+			$(".fahrenheit").toggleClass("badge");
+			$(".celcius").toggleClass("badge");
 		}
 		$(".card").fadeOut("slow", function() {
 			$("#spinner").fadeIn("slow");
@@ -211,6 +226,12 @@ $(function() {
 				$(".info").slideUp("slow");
 			}
 		}
+
+		if ($(".fahrenheit").hasClass("badge")) {
+			$(".fahrenheit").toggleClass("badge");
+			$(".celcius").toggleClass("badge");
+		}
+
 		$(".fcard").fadeOut("slow", function() {
 			$("#spinner").fadeIn("slow");
 		});
