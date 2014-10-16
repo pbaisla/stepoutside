@@ -1,4 +1,41 @@
 $(function() {
+
+	function converttemp(unit, temperature) {
+		var t;
+		if (unit == 0) { // Celcius - convert to fahrenheit
+			t = (temperature * 9/5) + 32;
+		}
+		else {// Fahrenheit - convert to Celcius
+			t = (temperature - 32) * 5/9;
+		}
+		t = Math.round(t*100)/100;
+		return t;
+	}
+
+	$("#tchange").click(function() {
+		$("#celcius").toggleClass("badge");
+		$("#fahrenheit").toggleClass("badge");
+		var unit; 
+		var temp;
+		 if($("#celcius").hasClass("badge")) {
+		 	unit = 1;
+		 	temp = "°C";
+		 }
+		 else {
+		 	unit = 0;
+		 	temp = "°F";
+		 }
+		var t = $("#temperature").text().substr(0,$("#temperature").text().indexOf(' '));
+		$("#temperature").text( converttemp(unit, t) + " " + temp);
+		var at = $("#apptemperature").text().substr(0,$("#apptemperature").text().indexOf(' '));
+		$("#apptemperature").text( converttemp(unit, at) + " " + temp);
+		var mt = $("#maxtemperature").text().substr(0,$("#maxtemperature").text().indexOf(' '));
+		$("#maxtemperature").text( converttemp(unit, mt) + " " + temp);
+		var mnt = $("#mintemperature").text().substr(0,$("#mintemperature").text().indexOf(' '));
+		$("#mintemperature").text( converttemp(unit, mnt) + " " + temp);
+		console.log(t+" "+at+" "+mt+" "+mnt+" "+$("#temperature").text().substr($("#temperature").text().indexOf(' ')+1)); 
+	});
+
 	if (window.location.pathname == "/forecast") {
 		if ((gup("lat") != null) && (gup("lng") != null) && (gup("loc") != null)) {
 			showForecastCallback(null, null, gup("lat"), gup("lng"), gup("loc"));
@@ -60,6 +97,10 @@ $(function() {
 				$(".info").slideUp("slow");
 			}
 		}
+		if ($("#fahrenheit").hasClass("badge")) {
+			$("#fahrenheit").toggleClass("badge");
+			$("#celcius").toggleClass("badge");
+		}
 		$(".card").fadeOut("slow", function() {
 			$("#spinner").fadeIn("slow");
 		});
@@ -69,6 +110,7 @@ $(function() {
 		clearTimeout(cleartime);
 	  	var latitude = parsedGeocodeResult.lat;
 	  	var longitude = parsedGeocodeResult.lng;
+	  	console.log("ajax time");
 	  	$.ajax({
 			url: "https://api.forecast.io/forecast/" + key + "/" + latitude + "," + longitude,
 			jsonp: "callback",
@@ -77,6 +119,7 @@ $(function() {
 				units: "ca"
 			},
 			success: function( response ) {
+				console.log("In function response");
 				$("#forecastlink").attr("href", function() {
 					var url = "/forecast?lat=" + latitude + "&lng=" + longitude + "&loc=" + geocodeResult.formatted_address;
 					return url;
