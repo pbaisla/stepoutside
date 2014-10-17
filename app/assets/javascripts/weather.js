@@ -66,13 +66,13 @@ $(function() {
 		$("#notice").css("visibility", "hidden");
 	}
 	else
-		$("#notice").delay(1000).fadeOut(); 
+		$("#notice").delay(500).fadeOut(); 
 
 	if ($("#alert").text().search(/[a-z]/) == -1 ) {
 		$("#alert").css("visibility", "hidden");
 	}
 	else
-		$("#alert").delay(5000).fadeOut();
+		$("#alert").delay(2000).fadeOut();
 
 	function gup( name )
 	{
@@ -187,20 +187,7 @@ $(function() {
 					cleartime = setTimeout(clock, 1000);
 				}
 
-				$("body").css("background-color", function() {
-					switch(response.currently.icon) {
-						case "clear-day": return "#ffee00";
-						case "clear-night": return "#110d4a";
-						case "sleet": return "#70888f";
-						case "partly-cloudy-day": return "#03cafc";
-						case "cloudy": return "#909090";
-						case "partly-cloudy-night": return "#817887";
-						case "snow": return "#fff5f8";
-						case "fog": return "#787788";
-						case "wind": return "#7C8382";
-						case "rain": return "#69609F";
-					}
-				});
+				$("body").css("background-image", "url(/images/weather/" + response.currently.icon + ".jpg)");
 				
 				clock();
 				console.log( response.currently );

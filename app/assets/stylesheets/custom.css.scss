@@ -67,7 +67,8 @@ strong {
 
 body {
   padding-top: 60px;
-  background: #55b4e7;
+  background-size: 100%;
+  background-color: #000;
 }
 
 #spinner {
@@ -82,12 +83,12 @@ body {
   padding: 4px;
   margin: 10px;
   width: 100%;
-  box-shadow: 1px 1px 10px #C8DD66;
+  box-shadow: 1px 1px 10px #000000;
 }
 
 #go {
   position: absolute;
-  top: 22px;
+  top: 38%;
   right: 15px;
 }
 
@@ -102,6 +103,12 @@ body {
 #weather-img {
   max-width: 225px;
   min-width: 180px;
+}
+
+form {
+  div, a {
+    margin-bottom: 20px;
+  }
 }
 
 .weather-img {
@@ -150,6 +157,13 @@ p {
 
 header {
   box-shadow: 1px 1px 10px #000;
+}
+
+.bgimage {
+  position: fixed;
+  z-index: -50;
+  top: 0;
+  left: 0;
 }
 
 #logo {

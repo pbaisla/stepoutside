@@ -5,7 +5,7 @@
 <div class="row">
   <div class="col-sm-offset-3 col-sm-6" id="searchdiv">
     <span class="glyphicon glyphicon-search" id="go"></span>
-     <input type="search" name="location" id="search" placeholder="Search for any city..." autocomplete="off" autofocus="autofocus">
+     <input type="search" name="location" class="form-control" id="search" placeholder="Search for any city..." autocomplete="off" autofocus="autofocus">
   </div>
 </div>
 <div class="info text-center"><p><small><em>Just begin typing to select your city</em></small></p></div>
@@ -44,15 +44,6 @@
               Sunrise Time: <strong><span id="sunrise"></span></strong>
       <br>    Sunset Time: <strong><span id="sunset"></span></strong>
       </div>
-      <div class="col-md-12 text-left hidden-xs">
-        <h4>Next</h4>
-              Hour: 
-      <br>    <strong><span id="hour"></span></strong>
-      <br>    24 hours: 
-      <br>    <strong><span id="tfhour"></span></strong>
-      <br>    Week: 
-      <br>    <strong><span id="week"></span></strong>
-      </div>
       </div>
   </div>
 
@@ -83,3 +74,4 @@
   </div>
 
 </div>
+<%= image_tag "background.jpg", :class => "bgimage" %>
