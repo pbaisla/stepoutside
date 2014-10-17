@@ -72,8 +72,6 @@ $(function() {
 		$("#alert").css("visibility", "hidden");
 	}
 
-	$("#arrow").delay(5000).fadeOut(); 
-
 	function gup( name )
 	{
 	  name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
@@ -312,7 +310,8 @@ $(function() {
 			},
 			complete: function() {
 				$("#spinner").fadeOut("slow", function() {
-					$(".fcard").fadeIn("slow");		
+					$(".fcard").fadeIn("slow");
+					$("#arrow").delay(5000).fadeOut(); 
 				});
 			}
 		});
