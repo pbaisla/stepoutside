@@ -14,8 +14,10 @@
 </div>
 <% end %>
   <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true, :class => "form-control input-lg" %></div>
-
+  <div class="input-group">
+    <span class="input-group-addon glyphicon glyphicon-envelope"></span>
+    <%= f.email_field :email, autofocus: true, :class => "form-control input-lg" %></div>
+  </div>
   <div><button type="submit" class="btn btn-default">Resend unlock instructions</button></div>
 <% end %>
 
@@ -26,3 +28,4 @@
 		</div>
 	</div>
 </div>
+<%= image_tag "login.jpg", :class => "bgimage" %>

@@ -188,7 +188,7 @@ $(function() {
 				}
 
 				$("body").css("background-image", "url(/images/weather/" + response.currently.icon + ".jpg)");
-				
+				$("#bgimage").fadeOut();
 				clock();
 				console.log( response.currently );
 				console.log( response ); // server response

@@ -68,7 +68,9 @@ strong {
 body {
   padding-top: 60px;
   background-size: 100%;
-  background-color: #000;
+  background-color: #000;    
+  background-attachment: fixed;
+  background-position: center; 
 }
 
 #spinner {
