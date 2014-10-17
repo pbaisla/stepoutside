@@ -187,8 +187,7 @@ $(function() {
 					cleartime = setTimeout(clock, 1000);
 				}
 
-				$("body").css("background-image", "url(/images/weather/" + response.currently.icon + ".jpg)");
-				$("#bgimage").fadeOut();
+				$("#bgimage").attr("src", "/images/weather/" + response.currently.icon + ".jpg");
 				clock();
 				console.log( response.currently );
 				console.log( response ); // server response
@@ -282,21 +281,8 @@ $(function() {
 				else
 					$('#location').text(loc.replace(/%../g, " "));
 				
-				$("body").css("background-color", function() {
-					switch(response.daily.icon) {
-						case "clear-day": return "#ffee00";
-						case "clear-night": return "#110d4a";
-						case "sleet": return "#70888f";
-						case "partly-cloudy-day": return "#03cafc";
-						case "cloudy": return "#909090";
-						case "partly-cloudy-night": return "#817887";
-						case "snow": return "#f2f5ff";
-						case "fog": return "#787788";
-						case "wind": return "#7C8382";
-						case "rain": return "#69609F";
-					}
-				});
-
+				$("#bgimage").attr("src", "/images/weather/" + response.currently.icon + ".jpg");
+				
 				console.log( response.currently );
 				console.log( response ); // server response
 			},
