@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '2.1.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.8'
 
@@ -50,6 +51,8 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-group :production do
-  gem 'shelly-dependencies'
-end
+#group :production do
+#  gem 'shelly-dependencies'
+#end
+
+gem 'rails_12factor'
