@@ -51,8 +51,8 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-#group :production do
-#  gem 'shelly-dependencies'
-#end
-
+group :production do
+  gem 'shelly-dependencies'
+end
+gem 'thin'
 gem 'rails_12factor'
