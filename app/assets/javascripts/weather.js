@@ -71,6 +71,8 @@ $(function() {
 	if ($("#alert").text().search(/[a-z]/) == -1 ) {
 		$("#alert").css("visibility", "hidden");
 	}
+	else
+		$("#alert").delay(5000).fadeOut();
 
 	function gup( name )
 	{
@@ -213,8 +215,11 @@ $(function() {
 		landing();
 	}
 
-	function showForecastCallback(geocodeResult, parsedGeocodeResult, lat = null, lng = null, loc = null){
-		function landing() {
+	function showForecastCallback(geocodeResult, parsedGeocodeResult, lat, lng, loc){
+		lat = typeof lat !== 'undefined' ? lat : null;
+  		lng = typeof lng !== 'undefined' ? lng : null;
+  		loc = typeof loc !== 'undefined' ? loc : null;
+  		function landing() {
 			if ($("#main").css("display") == "none") {
 				$("#landing").slideUp("slow", function() {
 					$("#searchdiv").removeClass("col-sm-offset-3", "slow", function() {

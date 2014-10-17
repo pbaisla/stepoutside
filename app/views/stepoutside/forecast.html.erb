@@ -9,8 +9,10 @@
      <input type="search" name="location" id="forecastsearch" placeholder="Search for any city..." autocomplete="off" autofocus="autofocus">
   </div>
   <div class="col-xs-11 col-sm-5 fcard" id="locationcard">
+  <div class="row">
     Location
     <strong><span id="location"> &nbsp; </span></strong>
+  </div>
   </div>
 </div>
 <div class="info text-center"><p><small><em>Just begin typing to select your city</em></small></p></div>
@@ -47,5 +49,5 @@
   </div>
 
 <% end -%>
-<%= image_tag "arrow.png", :id => "arrow" %>
+<%= image_tag "arrow.png", :id => "arrow", :class => "hidden-xs" %>
 </div>

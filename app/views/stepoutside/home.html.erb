@@ -39,9 +39,12 @@
       <div class="text-left"><%= link_to "See weekly forecast", forecast_path, :id => "forecastlink" %></div>
       <div class="col-md-12 text-left" id="more">
         <hr>
+      <div class="col-md-12 text-left">
         <h4>More info</h4>
               Sunrise Time: <strong><span id="sunrise"></span></strong>
       <br>    Sunset Time: <strong><span id="sunset"></span></strong>
+      </div>
+      <div class="col-md-12 text-left hidden-xs">
         <h4>Next</h4>
               Hour: 
       <br>    <strong><span id="hour"></span></strong>
@@ -49,6 +52,7 @@
       <br>    <strong><span id="tfhour"></span></strong>
       <br>    Week: 
       <br>    <strong><span id="week"></span></strong>
+      </div>
       </div>
   </div>
 
