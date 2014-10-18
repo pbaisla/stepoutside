@@ -66,7 +66,7 @@ $(function() {
 		$("#notice").css("visibility", "hidden");
 	}
 	else
-		$("#notice").delay(500).fadeOut(); 
+		$("#notice").delay(1000).fadeOut(); 
 
 	if ($("#alert").text().search(/[a-z]/) == -1 ) {
 		$("#alert").css("visibility", "hidden");
